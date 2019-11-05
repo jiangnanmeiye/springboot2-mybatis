@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    name: test
+#    url: ENC(pP+hdxrCorATpEGU0MOsZMdXgaU41D3dUaT+Nknz6eO2VPTo9LKOBpnD9B76krCpkWgRye03s5W57QakYVs152AB/L+1Z71qVxYZkcMnMZzQHvRn6b7vlZsa/8/d1kEBMEWiEHiFDpBxO7mQZrFJmg==)
+#    username: ENC(d6ONUrqF2Ad4xhNeDoLjWA==)
+#    password: ENC(8pMf5mO0zBhJsVUMT1fYvzAvRaN9pako)
+    url: jdbc:mysql://127.0.0.1:3306/local?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+    username: root
+    password: hbgydx520
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    # druid数据源的配置
+    druid:
+      initial-size: 5
+      max-active: 20
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: SELECT 1
+      validation-query-timeout: 2000
+      test-on-borrow: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapping/*.xml  #mapper映射.xml文件所在地
+  type-aliases-package: com.spring.mybatis.model  #model或是domain文件所在地
+
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+#jasypt:
+#  encryptor:
+#    password: bchsGVxsnCxysXs736nxjs
